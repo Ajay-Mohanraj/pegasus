@@ -28,7 +28,7 @@ public class Scrabble extends Application {
         pm = new PlayerMenu();
         pm.setPrefHeight(50);
         wholeThing.setCenter(board);
-        wholeThing.setTop(pm);
+        wholeThing.setBottom(pm);
 
         Scene scene = new Scene(wholeThing);
 

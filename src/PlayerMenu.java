@@ -62,6 +62,20 @@ public class PlayerMenu extends Pane {
                         }
                         Collections.sort(tileList);
                     }
+                    else if (t.isPlaced && !tileList.contains(t)){
+                        if ((int) tileList.get(tileList.size() - 1).getLayoutX() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutX() / 35 && (int)t.getLayoutY() / 35 < (int) tileList.get(0).getLayoutY() / 35 &&  (int) tileList.get(0).getLayoutY() / 35 - (int)t.getLayoutY() / 35 < 1) {
+                            tileList.add(t);
+                        } else if ((int) tileList.get(tileList.size() - 1).getLayoutX() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutX() / 35 && (int) a.getY() / 35 > (int) tileList.get(tileList.size() - 1).getLayoutY() / 35) {
+                            board.addTile(t, (int) tileList.get(tileList.size() - 1).getLayoutX(), (int) tileList.get(tileList.size() - 1).getLayoutY() + 35);
+                            tileList.add(t);
+                        } else if ((int) tileList.get(tileList.size() - 1).getLayoutY() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutY() / 35 && (int) a.getX() / 35 < (int) tileList.get(0).getLayoutX() / 35) {
+                            board.addTile(t, (int) tileList.get(0).getLayoutX() - 35, (int) tileList.get(tileList.size() - 1).getLayoutY());
+                            tileList.add(t);
+                        } else if ((int) tileList.get(tileList.size() - 1).getLayoutY() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutY() / 35 && (int) a.getX() / 35 > (int) tileList.get(tileList.size() - 1).getLayoutX() / 35) {
+                            board.addTile(t, (int) tileList.get(tileList.size() - 1).getLayoutX() + 35, (int) tileList.get(tileList.size() - 1).getLayoutY());
+                            tileList.add(t);
+                        }
+                    }
                     getScene().setOnKeyPressed(k -> {
                         int i = 0;
                         Filler[] multipliers = new Filler[tileList.size()];
@@ -85,13 +99,11 @@ public class PlayerMenu extends Pane {
     }
 
     public void returnTiles(ArrayList<Tile> tiles, BorderPane bp){
-        for (int i = 1; i <= 7; i++){
+        for (int i = 1; i <= 7; i++) {
             Tile t = tiles.get(i - 1);
-            t.multplier = new Normal();
-            t.isPlaced = false;
-            bp.getChildren().add(t);
             t.setLayoutX(30 * i);
-            t.setLayoutY(getHeight() * 5/6);
+            t.setLayoutY(getHeight()/2 - 15);
+            t.saveCoords();
         }
     }
 
@@ -101,7 +113,11 @@ public class PlayerMenu extends Pane {
             t.setLayoutX(30 * i);
             t.setLayoutY(getHeight()/2 - 15);
             t.saveCoords();
-            getChildren().add(t);
+            try {
+                getChildren().add(t);
+            } catch (IllegalArgumentException e){
+                break;
+            }
         }
     }
 
