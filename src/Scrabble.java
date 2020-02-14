@@ -14,7 +14,7 @@ public class Scrabble extends Application {
     HashMap<Character, Integer> bag = new HashMap<>();
 
     public void start(Stage stage) {
-
+        fillBag();
         Board board = new Board();
 
         Scene scene = new Scene(board);
@@ -24,10 +24,7 @@ public class Scrabble extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
 
-        launch(args);
-    }
 
     public void fillBag() {
         bag.put('A', 9);
@@ -57,9 +54,6 @@ public class Scrabble extends Application {
         bag.put('Y', 2);
         bag.put('Z', 1);
         bag.put('_', 2);
-
-
-
     }
 }
 
