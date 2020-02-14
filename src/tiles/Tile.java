@@ -6,7 +6,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class Tile extends StackPane {
+public class Tile extends StackPane implements Comparable<Tile> {
     private char letter;
     private int value;
     public boolean isPlaced = false;
@@ -50,6 +50,14 @@ public class Tile extends StackPane {
         t.setFont(Font.font("Calibri", 25));
 
         this.getChildren().addAll(r, t);
+    }
+
+    @Override
+    public int compareTo(Tile o) {
+        if ((int)this.getLayoutX() / 35 != (int)o.getLayoutX() / 35){
+            return (int)(this.getLayoutX() - o.getLayoutX());
+        }
+        return (int)(this.getLayoutY() - o.getLayoutY());
     }
 
     public String getLetter() {

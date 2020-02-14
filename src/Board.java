@@ -98,6 +98,8 @@ public class Board extends GridPane {
 	}
 	public void addTile(Tile tile, int x, int y) {
 		add(tile, x / 35, y / 35);
+		tile.setLayoutX(x);
+		tile.setLayoutY(y);
 		tile.isPlaced = true;
 	}
 }
