@@ -4,7 +4,7 @@ import tiles.Tile;
 import java.util.ArrayList;
 
 public class PlayerMenu extends Pane {
-    private char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+    private char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
     public PlayerMenu() {
         ArrayList<Integer> used = new ArrayList<>();
 
@@ -22,8 +22,8 @@ public class PlayerMenu extends Pane {
 
         for (int i = 1; i <= 7; i++) {
             Tile t = tiles.get(i - 1);
-            t.setLayoutX(30 * i);
-            t.setLayoutY(getHeight()/2);
+            t.setLayoutX(65 * i + 7);
+            t.setLayoutY(10);
 
             getChildren().add(t);
 
