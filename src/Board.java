@@ -1,3 +1,7 @@
+import javafx.geometry.Insets;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -6,7 +10,8 @@ import tiles.Tile;
 public class Board extends GridPane {
 	//public GridPane boardPane = new GridPane();
 	public Board() {
-	    setWidth(600);
+		setBackground(new Background(new BackgroundFill(Color.SANDYBROWN, CornerRadii.EMPTY, Insets.EMPTY)));
+		setWidth(600);
 	    setHeight(600);
 		for (int row = 0; row < 15; row++) {
 			for (int column = 0; column < 15; column++) {
