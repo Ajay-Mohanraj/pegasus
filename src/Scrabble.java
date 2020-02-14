@@ -35,7 +35,6 @@ public class Scrabble extends Application {
         stage.setScene(scene);
 
         stage.show();
-        System.out.println(tiles);
     }
 
     public void giveTiles(){
