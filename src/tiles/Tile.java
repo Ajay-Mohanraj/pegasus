@@ -35,8 +35,8 @@ public class Tile extends Rectangle {
             value = 1;
         }
 
-        setHeight(20);
-        setWidth(20);
+        setHeight(30);
+        setWidth(30);
         setArcHeight(10);
         setArcWidth(10);
 

@@ -1,7 +1,9 @@
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tiles.Tile;
@@ -15,9 +17,21 @@ public class Scrabble extends Application {
 
     public void start(Stage stage) {
         fillBag();
-        Board board = new Board();
 
-        Scene scene = new Scene(board);
+        BorderPane wholeThing = new BorderPane();
+
+        PlayerMenu p1 = new PlayerMenu();
+        p1.setPrefHeight(50);
+        PlayerMenu p2 = new PlayerMenu();
+        p2.setPrefHeight(50);
+
+        Board board = new Board();
+        wholeThing.setTop(p1);
+        wholeThing.setCenter(board);
+        wholeThing.setBottom(p2);
+
+
+        Scene scene = new Scene(wholeThing);
 
         stage.setScene(scene);
 
