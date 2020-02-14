@@ -1,12 +1,9 @@
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import tiles.Tile;
 
 public class Board extends GridPane {
-	//public GridPane boardPane = new GridPane();
+	public Filler[][] boardArray = new Filler[15][15];
 	public Board() {
 		setBackground(new Background(new BackgroundFill(Color.SANDYBROWN, CornerRadii.EMPTY, Insets.EMPTY)));
 		//setPadding(new Insets(35,15,75,15));
@@ -19,6 +16,7 @@ public class Board extends GridPane {
 				m.setHeight(getHeight() / 15);
 				m.setWidth(getWidth() / 15);
 				add(m, column, row);
+				boardArray[row][column] = m;
 			}
 		}
 		for (int row = 0; row < 15; row++) {
@@ -29,6 +27,7 @@ public class Board extends GridPane {
                     m.setHeight(getHeight() / 15);
                     m.setWidth(getWidth() / 15);
                     add(m, column, row);
+					boardArray[row][column] = m;
                 }
 				if ((row == 0 || row == 14 || row == 7) && (column == 0 || column == 14 || column == 7) && !(row == 7 && column == 7)){
 					MultWord m = new MultWord(2);
@@ -36,6 +35,7 @@ public class Board extends GridPane {
 					m.setHeight(getHeight() / 15);
 					m.setWidth(getWidth() / 15);
 					add(m, column, row);
+					boardArray[row][column] = m;
 				}
 			    if ((row == 0 || row == 14) && (column == 3 || column == 11)){
 					MultLetter m = new MultLetter(2);
@@ -43,6 +43,7 @@ public class Board extends GridPane {
 					m.setHeight(getHeight() / 15);
 					m.setWidth(getWidth() / 15);
 					add(m, column, row);
+					boardArray[row][column] = m;
 				}
 				if ((column == 0 || column == 14) && (row == 3 || row == 11)){
 					MultLetter m = new MultLetter(2);
@@ -50,6 +51,7 @@ public class Board extends GridPane {
 					m.setHeight(getHeight() / 15);
 					m.setWidth(getWidth() / 15);
 					add(m, column, row);
+					boardArray[row][column] = m;
 				}
 				if (column == 7 && (row == 3 || row == 11)){
 					MultLetter m = new MultLetter(2);
@@ -57,6 +59,7 @@ public class Board extends GridPane {
 					m.setHeight(getHeight() / 15);
 					m.setWidth(getWidth() / 15);
 					add(m, column, row);
+					boardArray[row][column] = m;
 				}
 				if (row == 7 && (column == 3 || column == 11)){
 					MultLetter m = new MultLetter(2);
@@ -64,6 +67,7 @@ public class Board extends GridPane {
 					m.setHeight(getHeight() / 15);
 					m.setWidth(getWidth() / 15);
 					add(m, column, row);
+					boardArray[row][column] = m;
 				}
 				if ((row == 6 || row == 8) && (column == 2 || column == 12 || column == 6 || column == 8)){
 					MultLetter m = new MultLetter(2);
@@ -71,6 +75,7 @@ public class Board extends GridPane {
 					m.setHeight(getHeight() / 15);
 					m.setWidth(getWidth() / 15);
 					add(m, column, row);
+					boardArray[row][column] = m;
 				}
 				if ((column == 6 || column == 8) && (row == 2 || row == 12 || row == 6 || row == 8)){
 					MultLetter m = new MultLetter(2);
@@ -78,6 +83,7 @@ public class Board extends GridPane {
 					m.setHeight(getHeight() / 15);
 					m.setWidth(getWidth() / 15);
 					add(m, column, row);
+					boardArray[row][column] = m;
 				}
 				if ((row == 5 || row == 9 || row == 1 || row == 13) && (column == 5 || column == 9)){
 					MultLetter m = new MultLetter(2);
@@ -92,12 +98,14 @@ public class Board extends GridPane {
 					m.setHeight(getHeight() / 15);
 					m.setWidth(getWidth() / 15);
 					add(m, column, row);
+					boardArray[row][column] = m;
 				}
 			}
 		}
 
 	}
 	public void addTile(Tile tile, int x, int y) {
+		tile.multplier = boardArray[x / 35][y / 35];
 		add(tile, x / 35, y / 35);
 		tile.setLayoutX(x);
 		tile.setLayoutY(y);

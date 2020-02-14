@@ -1,12 +1,7 @@
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import tiles.Tile;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -19,8 +14,8 @@ public class Scrabble extends Application {
     private ArrayList<Tile> p2tiles = new ArrayList<>();
     private PlayerMenu pm;
     private Board board;
-    public int pts1 = 0;
-    public int pts2 = 0;
+    public ArrayList<Integer> pts1 = new ArrayList<>();
+    public ArrayList<Integer> pts2 = new ArrayList<>();
     public BorderPane wholeThing;
 
     public void start(Stage stage) throws FileNotFoundException {
@@ -33,9 +28,7 @@ public class Scrabble extends Application {
         pm = new PlayerMenu();
         pm.setPrefHeight(50);
         wholeThing.setCenter(board);
-        wholeThing.setBottom(pm);
-
-
+        wholeThing.setTop(pm);
 
         Scene scene = new Scene(wholeThing);
 
@@ -47,18 +40,20 @@ public class Scrabble extends Application {
     }
 
     public void play(){
-        pts1 += pm.doTurn(p1tiles, board);
+        pm.doTurn(p1tiles, board, pts1, wholeThing);
         giveTiles(p1tiles);
+        System.out.println(pts1);
 
-        wholeThing.setBottom(null);
+        //wholeThing.setBottom(null);
 
-        pts2 += pm.doTurn(p2tiles, board);
-        giveTiles(p2tiles);
+        //pm.doTurn(p2tiles, board, pts2, wholeThing);
+        //giveTiles(p2tiles);
+        //System.out.println(pts2);
 
-        wholeThing.setBottom(null);
+        //wholeThing.setBottom(null);
 
         if (bag.isEmpty()){
-            String winner = pts1 > pts2 ? "player !1" : "player 2!";
+            String winner = pts1.get(0) > pts2.get(0) ? "player !1" : "player 2!";
             if (pts1 != pts2) {
                 System.out.println("The winner is " + winner);
             }

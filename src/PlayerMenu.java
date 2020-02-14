@@ -1,11 +1,10 @@
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import tiles.Tile;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -18,54 +17,45 @@ public class PlayerMenu extends Pane {
         setWords();
     }
 
-    public int doTurn(ArrayList<Tile> tiles, Board board) {
-        int[] points = {0};
+    public void doTurn(ArrayList<Tile> tiles, Board board, ArrayList<Integer> points, BorderPane bp) {
+        points.add(0);
         drawTiles(tiles);
         for (Tile t : tiles) {
-
             t.requestFocus();
             t.setOnMouseClicked(e -> {
                 board.setOnMouseClicked(a -> {
                     if (!t.isPlaced) {
-                        if (tileList.size() == 1){
-                            if ((int)a.getX() / 35 == (int)tileList.get(tileList.size() - 1).getLayoutX() / 35 && (int)a.getY() / 35 > (int)tileList.get(tileList.size() - 1).getLayoutY() / 35){
-                                board.addTile(t, (int)tileList.get(tileList.size() - 1).getLayoutX(), (int)tileList.get(tileList.size() - 1).getLayoutY() + 35);
+                        if (tileList.size() == 1) {
+                            if ((int) a.getX() / 35 == (int) tileList.get(tileList.size() - 1).getLayoutX() / 35 && (int) a.getY() / 35 > (int) tileList.get(tileList.size() - 1).getLayoutY() / 35) {
+                                board.addTile(t, (int) tileList.get(tileList.size() - 1).getLayoutX(), (int) tileList.get(tileList.size() - 1).getLayoutY() + 35);
                                 tileList.add(t);
-                            }
-                            else if ((int)a.getX() / 35 == (int)tileList.get(tileList.size() - 1).getLayoutX() / 35 && (int)a.getY() / 35 < (int)tileList.get(0).getLayoutY() / 35){
-                                board.addTile(t, (int)tileList.get(tileList.size() - 1).getLayoutX(), (int)tileList.get(0).getLayoutY() - 35);
+                            } else if ((int) a.getX() / 35 == (int) tileList.get(tileList.size() - 1).getLayoutX() / 35 && (int) a.getY() / 35 < (int) tileList.get(0).getLayoutY() / 35) {
+                                board.addTile(t, (int) tileList.get(tileList.size() - 1).getLayoutX(), (int) tileList.get(0).getLayoutY() - 35);
                                 tileList.add(t);
-                            }
-                            else if ((int)a.getY() / 35 == (int)tileList.get(tileList.size() - 1).getLayoutY() / 35 && (int)a.getX() / 35 > (int)tileList.get(tileList.size() - 1).getLayoutX() / 35) {
-                                board.addTile(t, (int)tileList.get(tileList.size() - 1).getLayoutX() + 35, (int)tileList.get(tileList.size() - 1).getLayoutY());
+                            } else if ((int) a.getY() / 35 == (int) tileList.get(tileList.size() - 1).getLayoutY() / 35 && (int) a.getX() / 35 > (int) tileList.get(tileList.size() - 1).getLayoutX() / 35) {
+                                board.addTile(t, (int) tileList.get(tileList.size() - 1).getLayoutX() + 35, (int) tileList.get(tileList.size() - 1).getLayoutY());
                                 tileList.add(t);
-                            }
-                            else if ((int)a.getY() / 35 == (int)tileList.get(tileList.size() - 1).getLayoutY() / 35 && (int)a.getX() / 35 < (int)tileList.get(0).getLayoutX() / 35) {
-                                board.addTile(t, (int)tileList.get(0).getLayoutX() - 35, (int)tileList.get(tileList.size() - 1).getLayoutY());
+                            } else if ((int) a.getY() / 35 == (int) tileList.get(tileList.size() - 1).getLayoutY() / 35 && (int) a.getX() / 35 < (int) tileList.get(0).getLayoutX() / 35) {
+                                board.addTile(t, (int) tileList.get(0).getLayoutX() - 35, (int) tileList.get(tileList.size() - 1).getLayoutY());
                                 tileList.add(t);
                             }
                             Collections.sort(tileList);
-                        }
-                        else if (tileList.size() > 1) {
-                            if ((int)tileList.get(tileList.size() - 1).getLayoutX() / 35 == (int)tileList.get(tileList.size() - 2).getLayoutX() / 35 && (int)a.getY() / 35 < (int)tileList.get(0).getLayoutY() / 35){
-                                board.addTile(t, (int)tileList.get(tileList.size() - 1).getLayoutX(), (int)tileList.get(0).getLayoutY() - 35);
+                        } else if (tileList.size() > 1) {
+                            if ((int) tileList.get(tileList.size() - 1).getLayoutX() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutX() / 35 && (int) a.getY() / 35 < (int) tileList.get(0).getLayoutY() / 35) {
+                                board.addTile(t, (int) tileList.get(tileList.size() - 1).getLayoutX(), (int) tileList.get(0).getLayoutY() - 35);
                                 tileList.add(t);
-                            }
-                            else if ((int)tileList.get(tileList.size() - 1).getLayoutX() / 35 == (int)tileList.get(tileList.size() - 2).getLayoutX() / 35 && (int)a.getY() / 35 > (int)tileList.get(tileList.size() - 1).getLayoutY() / 35) {
-                                board.addTile(t, (int)tileList.get(tileList.size() - 1).getLayoutX(), (int)tileList.get(tileList.size() - 1).getLayoutY() + 35);
+                            } else if ((int) tileList.get(tileList.size() - 1).getLayoutX() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutX() / 35 && (int) a.getY() / 35 > (int) tileList.get(tileList.size() - 1).getLayoutY() / 35) {
+                                board.addTile(t, (int) tileList.get(tileList.size() - 1).getLayoutX(), (int) tileList.get(tileList.size() - 1).getLayoutY() + 35);
                                 tileList.add(t);
-                            }
-                            else if ((int)tileList.get(tileList.size() - 1).getLayoutY() / 35 == (int)tileList.get(tileList.size() - 2).getLayoutY() / 35 && (int)a.getX() / 35 < (int)tileList.get(0).getLayoutX() / 35){
-                                board.addTile(t, (int)tileList.get(0).getLayoutX() - 35, (int)tileList.get(tileList.size() - 1).getLayoutY());
+                            } else if ((int) tileList.get(tileList.size() - 1).getLayoutY() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutY() / 35 && (int) a.getX() / 35 < (int) tileList.get(0).getLayoutX() / 35) {
+                                board.addTile(t, (int) tileList.get(0).getLayoutX() - 35, (int) tileList.get(tileList.size() - 1).getLayoutY());
                                 tileList.add(t);
-                            }
-                            else if ((int)tileList.get(tileList.size() - 1).getLayoutY() / 35 == (int)tileList.get(tileList.size() - 2).getLayoutY() / 35 && (int)a.getX() / 35 > (int)tileList.get(tileList.size() - 1).getLayoutX() / 35){
-                                board.addTile(t, (int)tileList.get(tileList.size() - 1).getLayoutX() + 35, (int)tileList.get(tileList.size() - 1).getLayoutY());
+                            } else if ((int) tileList.get(tileList.size() - 1).getLayoutY() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutY() / 35 && (int) a.getX() / 35 > (int) tileList.get(tileList.size() - 1).getLayoutX() / 35) {
+                                board.addTile(t, (int) tileList.get(tileList.size() - 1).getLayoutX() + 35, (int) tileList.get(tileList.size() - 1).getLayoutY());
                                 tileList.add(t);
                             }
                             Collections.sort(tileList);
-                        }
-                        else {
+                        } else {
                             board.addTile(t, (int) a.getX(), (int) a.getY());
                             tileList.add(t);
                             Collections.sort(tileList);
@@ -73,29 +63,35 @@ public class PlayerMenu extends Pane {
                         Collections.sort(tileList);
                     }
                     getScene().setOnKeyPressed(k -> {
-                        for (Tile o : tileList){
+                        int i = 0;
+                        Filler[] multipliers = new Filler[tileList.size()];
+                        for (Tile o : tileList) {
                             word[0] += o.getLetter();
+                            multipliers[i++] = o.getMultiplier();
                         }
-                        if (k.getCode().equals(KeyCode.ENTER)){
-                            System.out.println(Arrays.toString(word));
-                            if (words.contains(word[0])){
-                                points[0] = getPoints(word[0].toCharArray());
+                        if (k.getCode().equals(KeyCode.ENTER)) {
+                            if (words.contains(word[0])) {
+                                points.set(0, points.get(0) + getPoints(word[0].toCharArray(), multipliers));
+                            } else {
+                                returnTiles(tiles, bp);
                             }
-                            else {
-                                returnTiles(tiles);
-                            }
+                        } else if (k.getCode().equals(KeyCode.BACK_SPACE)) {
+                            returnTiles(tiles, bp);
                         }
                     });
                 });
             });
         }
-        return points[0];
     }
 
-    public void returnTiles(ArrayList<Tile> tiles){
-        for (Tile t : tiles){
-            t.setLayoutX(t.originalX);
-            t.setLayoutY(t.originalY);
+    public void returnTiles(ArrayList<Tile> tiles, BorderPane bp){
+        for (int i = 1; i <= 7; i++){
+            Tile t = tiles.get(i - 1);
+            t.multplier = new Normal();
+            t.isPlaced = false;
+            bp.getChildren().add(t);
+            t.setLayoutX(30 * i);
+            t.setLayoutY(getHeight() * 5/6);
         }
     }
 
@@ -103,18 +99,21 @@ public class PlayerMenu extends Pane {
         for (int i = 1; i <= 7; i++) {
             Tile t = tiles.get(i - 1);
             t.setLayoutX(30 * i);
-            t.setLayoutY(getHeight()/2);
+            t.setLayoutY(getHeight()/2 - 15);
             t.saveCoords();
             getChildren().add(t);
         }
     }
 
-    private int getPoints(char[] word){
+    private int getPoints(char[] word, Filler[] mults){
         int points = 0;
-        for (char c : word){
-            points += new Tile(c).getValue();
+        int wordTimes = 1;
+        for (int i = 0; i < word.length; i++){
+            points += new Tile(word[i]).getValue() * mults[i].getLetterMult();
+            wordTimes *= mults[i].getWordMult();
         }
-        return points;
+        System.out.println(points * wordTimes);
+        return points * wordTimes;
     }
 
     private static void setWords() throws FileNotFoundException {

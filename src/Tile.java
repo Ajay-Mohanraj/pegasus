@@ -1,5 +1,3 @@
-package tiles;
-
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -12,10 +10,19 @@ public class Tile extends StackPane implements Comparable<Tile> {
     public boolean isPlaced = false;
     public int originalX;
     public int originalY;
+    public Filler multplier = new Normal();
 
 
     public Tile(char letter) {
         this.letter = letter;
+        create();
+    }
+
+    public Filler getMultiplier(){
+        return multplier;
+    }
+
+    public void create(){
         if (letter == 'D' || letter == 'G'){
             value = 2;
         }
