@@ -1,8 +1,10 @@
 package tiles;
 
 import javafx.scene.Node;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 
-public class Tile {
+public class Tile extends Rectangle {
     private char letter;
     private int value;
 
@@ -32,6 +34,12 @@ public class Tile {
         else {
             value = 1;
         }
+
+        setHeight(20);
+        setWidth(20);
+        setArcHeight(10);
+        setArcWidth(10);
+
     }
 
     public String getLetter() {
