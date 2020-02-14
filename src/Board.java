@@ -28,21 +28,21 @@ public class Board extends GridPane {
                     m.setWidth(getWidth() / 15);
                     add(m, column, row);
                 }
-				else if ((row == 0 || row == 14) && (column == 0 || column == 14)){
+				if ((row == 0 || row == 14 || row == 7) && (column == 0 || column == 14 || column == 7) && !(row == 7 && column == 7)){
 					MultWord m = new MultWord(2);
-					m.setFill(Color.LIGHTBLUE);
+					m.setFill(Color.MAROON);
 					m.setHeight(getHeight() / 15);
 					m.setWidth(getWidth() / 15);
 					add(m, column, row);
 				}
-			    else if ((row == 0 || row == 14) && (column == 3 || column == 11)){
+			    if ((row == 0 || row == 14) && (column == 3 || column == 11)){
 					MultLetter m = new MultLetter(2);
 					m.setFill(Color.LIGHTBLUE);
 					m.setHeight(getHeight() / 15);
 					m.setWidth(getWidth() / 15);
 					add(m, column, row);
 				}
-				else if ((column == 0 || column == 14) && (row == 3 || row == 11)){
+				if ((column == 0 || column == 14) && (row == 3 || row == 11)){
 					MultLetter m = new MultLetter(2);
 					m.setFill(Color.LIGHTBLUE);
 					m.setHeight(getHeight() / 15);
