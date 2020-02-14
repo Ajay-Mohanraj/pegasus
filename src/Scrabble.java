@@ -1,6 +1,10 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -18,7 +22,14 @@ public class Scrabble extends Application {
     public ArrayList<Integer> pts2 = new ArrayList<>();
     public BorderPane wholeThing;
 
+
+
+
     public void start(Stage stage) throws FileNotFoundException {
+        WebView webview = new WebView();
+        webview.getEngine().load(
+                "https://www.youtube.com/watch?v=kZ_VdZm8qIA"
+        );
         fillBag();
         giveTiles(p1tiles);
         giveTiles(p2tiles);
