@@ -27,7 +27,7 @@ public class Tile extends Rectangle {
         else if (letter == 'Q' || letter == 'Z'){
             value = 10;
         }
-        else if (letter == ' '){
+        else if (letter == '_'){
             value = 0;
         }
         else {
@@ -43,5 +43,9 @@ public class Tile extends Rectangle {
 
     public int getValue() {
         return value;
+    }
+
+    public String toString(){
+        return getLetter();
     }
 }
