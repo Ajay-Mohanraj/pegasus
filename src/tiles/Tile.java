@@ -1,8 +1,13 @@
 package tiles;
 
+import javafx.scene.layout.Border;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
-public class Tile extends Rectangle {
+public class Tile extends StackPane {
     private char letter;
     private int value;
 
@@ -33,6 +38,20 @@ public class Tile extends Rectangle {
         else {
             value = 1;
         }
+
+        Rectangle r = new Rectangle();
+        r.setHeight(30);
+        r.setWidth(30);
+        r.setArcHeight(10);
+        r.setArcWidth(10);
+        r.setFill(Color.WHITE);
+        r.setStroke(Color.BLACK);
+
+        Text t = new Text("" + letter);
+        t.setFont(Font.font("Calibri", 25));
+
+        this.getChildren().addAll(r, t);
+
 
 
     }
