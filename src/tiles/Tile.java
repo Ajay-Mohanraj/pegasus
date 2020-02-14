@@ -26,6 +26,9 @@ public class Tile {
         else if (letter == 'Q' || letter == 'Z'){
             value = 10;
         }
+        else if (letter == '_'){
+            value = 0;
+        }
         else {
             value = 1;
         }
