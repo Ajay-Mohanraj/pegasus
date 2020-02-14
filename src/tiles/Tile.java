@@ -1,10 +1,6 @@
 package tiles;
 
-import javafx.scene.Node;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Rectangle;
-
-public class Tile extends Rectangle {
+public class Tile {
     private char letter;
     private int value;
 
@@ -28,18 +24,12 @@ public class Tile extends Rectangle {
         else if (letter == 'Q' || letter == 'Z'){
             value = 10;
         }
-        else if (letter == '_'){
+        else if (letter == ' '){
             value = 0;
         }
         else {
             value = 1;
         }
-
-        setHeight(30);
-        setWidth(30);
-        setArcHeight(10);
-        setArcWidth(10);
-
     }
 
     public String getLetter() {
