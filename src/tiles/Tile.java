@@ -26,8 +26,8 @@ public class Tile {
         }
     }
 
-    public char getLetter() {
-        return letter;
+    public String getLetter() {
+        return Character.toString(letter);
     }
 
     public int getValue() {
