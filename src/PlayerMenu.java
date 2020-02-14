@@ -8,26 +8,26 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PlayerMenu extends Pane {
-    private static ArrayList<String> words;
-    public PlayerMenu(ArrayList<Tile> tiles, Board board) {
+    private static ArrayList<String> words = new ArrayList<>();
+    private String[] word = {""};
+
+    public PlayerMenu(ArrayList<Tile> tiles, Board board) throws FileNotFoundException{
+        setWords();
         for (int i = 1; i <= 7; i++) {
             Tile t = tiles.get(i - 1);
             t.setLayoutX(30 * i);
             t.setLayoutY(getHeight()/2);
 
-
-
             t.setOnMouseClicked(e -> {
                 board.setOnMouseClicked(a -> {
-                    String word = "";
                     if (!t.isPlaced) {
-                        word += t.getLetter();
+                        word[0] = word[0] + t.getLetter();
                         board.addTile(t, (int) a.getX(), (int) a.getY());
                     }
-                    setOnKeyPressed(k -> {
-                        if (k.getCode() == KeyCode.ESCAPE){
-                            if (words.contains(word)){
-                                getPoints(word.toCharArray());
+                    getScene().setOnKeyPressed(k -> {
+                        if (k.getCode().equals(KeyCode.ENTER)){
+                            if (words.contains(word[0])){
+                                getPoints(word[0].toCharArray());
                             }
                         }
                     });

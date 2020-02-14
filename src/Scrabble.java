@@ -4,6 +4,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import tiles.Tile;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -14,7 +15,7 @@ public class Scrabble extends Application {
     private ArrayList<Tile> p1tiles = new ArrayList<>();
     private ArrayList<Tile> p2tiles = new ArrayList<>();
 
-    public void start(Stage stage) {
+    public void start(Stage stage) throws FileNotFoundException {
         fillBag();
         giveTiles(p1tiles);
         giveTiles(p2tiles);
