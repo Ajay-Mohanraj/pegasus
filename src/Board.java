@@ -8,7 +8,7 @@ public class Board extends GridPane {
 	//public GridPane boardPane = new GridPane();
 	public Board() {
 		setBackground(new Background(new BackgroundFill(Color.SANDYBROWN, CornerRadii.EMPTY, Insets.EMPTY)));
-		setPadding(new Insets(35,15,75,15));
+		//setPadding(new Insets(35,15,75,15));
 		setWidth(525);
 	    setHeight(525);
 		for (int row = 0; row < 15; row++) {
@@ -97,6 +97,7 @@ public class Board extends GridPane {
 
 	}
 	public void addTile(Tile tile, int x, int y) {
-		add(new Text(tile.getLetter()), x, y);
+		add(tile, x / 35, y / 35);
+		tile.isPlaced = true;
 	}
 }

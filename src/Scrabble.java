@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Scrabble extends Application {
-    private final char[] ALPHABET = "abcdefghijklmnopqrstuvwxyz_".toCharArray();
+    private final char[] ALPHABET = "abcdefghijklmnopqrstuvwxyz_".toUpperCase().toCharArray();
     private final int[] AMOUNTS = new int[] {9, 2, 2, 4, 12, 2, 3, 2, 9, 1, 1, 4, 2, 6, 8, 2, 1, 6, 4, 6, 4, 2, 2, 1, 2, 1, 2};
     private ArrayList<Character> bag = new ArrayList<>();
     private ArrayList<Tile> p1tiles = new ArrayList<>();
