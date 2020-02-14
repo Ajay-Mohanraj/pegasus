@@ -21,9 +21,9 @@ public class Scrabble extends Application {
         Board board = new Board();
         BorderPane wholeThing = new BorderPane();
 
-        PlayerMenu p1 = new PlayerMenu(p1tiles);
+        PlayerMenu p1 = new PlayerMenu(p1tiles, board);
         p1.setPrefHeight(50);
-        PlayerMenu p2 = new PlayerMenu(p2tiles);
+        PlayerMenu p2 = new PlayerMenu(p2tiles, board);
         p2.setPrefHeight(50);
 
         wholeThing.setTop(p1);

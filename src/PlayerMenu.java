@@ -5,14 +5,16 @@ import java.util.ArrayList;
 
 public class PlayerMenu extends Pane {
     private char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-    public PlayerMenu(ArrayList<Tile> tiles) {
+    public PlayerMenu(ArrayList<Tile> tiles, Board board) {
         for (int i = 1; i <= 7; i++) {
             Tile t = tiles.get(i - 1);
             t.setLayoutX(30 * i);
             t.setLayoutY(getHeight()/2);
 
             t.setOnMouseClicked(e -> {
-
+                board.setOnMouseClicked(a -> {
+                    board.add(t, (int)a.getX() / 40,(int)a.getY() / 40);
+                });
             });
 
             getChildren().add(t);
