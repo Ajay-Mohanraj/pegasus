@@ -1,6 +1,5 @@
 package tiles;
 
-import javafx.scene.layout.Border;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -10,9 +9,9 @@ import javafx.scene.text.Text;
 public class Tile extends StackPane {
     private char letter;
     private int value;
+    public boolean isPlaced = false;
 
-    public Tile(char letter)
-    {
+    public Tile(char letter) {
         this.letter = letter;
         if (letter == 'D' || letter == 'G'){
             value = 2;
