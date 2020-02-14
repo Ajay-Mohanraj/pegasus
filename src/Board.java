@@ -1,17 +1,22 @@
-import javafx.application.Application;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import tiles.Tile;
 
 public class Board extends GridPane {
 	//public GridPane boardPane = new GridPane();
 	public Board() {
+	    setWidth(600);
+	    setHeight(600);
 		for (int row = 0; row < 15; row++) {
 			for (int column = 0; column < 15; column++) {
-				if (row == column) {
-					add(new MultWord(2), column, row);
-				}
+			    if (row == column || row + column == 14) {
+                    MultWord m = new MultWord(2);
+                    m.setFill(Color.RED);
+                    m.setHeight(getHeight() / 15);
+                    m.setWidth(getWidth() / 15);
+                    add(m, column, row);
+                }
 			}
 		}
 
