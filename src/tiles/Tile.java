@@ -1,10 +1,13 @@
 package tiles;
 
-public class Tile {
+import javafx.scene.shape.Rectangle;
+
+public class Tile extends Rectangle {
     private char letter;
     private int value;
 
-    public Tile(char letter) {
+    public Tile(char letter)
+    {
         this.letter = letter;
         if (letter == 'D' || letter == 'G'){
             value = 2;
@@ -30,6 +33,8 @@ public class Tile {
         else {
             value = 1;
         }
+
+
     }
 
     public String getLetter() {
