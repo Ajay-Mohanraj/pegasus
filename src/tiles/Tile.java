@@ -10,6 +10,9 @@ public class Tile extends StackPane implements Comparable<Tile> {
     private char letter;
     private int value;
     public boolean isPlaced = false;
+    public int originalX;
+    public int originalY;
+
 
     public Tile(char letter) {
         this.letter = letter;
@@ -66,6 +69,11 @@ public class Tile extends StackPane implements Comparable<Tile> {
 
     public int getValue() {
         return value;
+    }
+
+    public void saveCoords(){
+         originalX = (int)getLayoutX();
+         originalY = (int)getLayoutY();
     }
 
     public String toString(){

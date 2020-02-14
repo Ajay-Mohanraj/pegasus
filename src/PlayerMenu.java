@@ -5,6 +5,7 @@ import tiles.Tile;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -13,26 +14,19 @@ public class PlayerMenu extends Pane {
     private String[] word = {""};
     private ArrayList<Tile> tileList = new ArrayList<>();
 
-    public PlayerMenu(ArrayList<Tile> tiles, Board board) throws FileNotFoundException{
+    public PlayerMenu() throws FileNotFoundException{
         setWords();
-        for (int i = 1; i <= 7; i++) {
-            Tile t = tiles.get(i - 1);
-            t.setLayoutX(30 * i);
-            t.setLayoutY(getHeight()/2);
-            getChildren().add(t);
-        }
-        doTurn(tiles, board);
     }
 
     public int doTurn(ArrayList<Tile> tiles, Board board) {
         int[] points = {0};
+        drawTiles(tiles);
         for (Tile t : tiles) {
 
             t.requestFocus();
             t.setOnMouseClicked(e -> {
                 board.setOnMouseClicked(a -> {
                     if (!t.isPlaced) {
-                        word[0] = word[0] + t.getLetter();
                         if (tileList.size() == 1){
                             if ((int)a.getX() / 35 == (int)tileList.get(tileList.size() - 1).getLayoutX() / 35 && (int)a.getY() / 35 > (int)tileList.get(tileList.size() - 1).getLayoutY() / 35){
                                 board.addTile(t, (int)tileList.get(tileList.size() - 1).getLayoutX(), (int)tileList.get(tileList.size() - 1).getLayoutY() + 35);
@@ -79,12 +73,16 @@ public class PlayerMenu extends Pane {
                         Collections.sort(tileList);
                     }
                     getScene().setOnKeyPressed(k -> {
+                        for (Tile o : tileList){
+                            word[0] += o.getLetter();
+                        }
                         if (k.getCode().equals(KeyCode.ENTER)){
+                            System.out.println(Arrays.toString(word));
                             if (words.contains(word[0])){
                                 points[0] = getPoints(word[0].toCharArray());
                             }
                             else {
-                                doTurn(tiles, board);
+                                returnTiles(tiles);
                             }
                         }
                     });
@@ -92,6 +90,23 @@ public class PlayerMenu extends Pane {
             });
         }
         return points[0];
+    }
+
+    public void returnTiles(ArrayList<Tile> tiles){
+        for (Tile t : tiles){
+            t.setLayoutX(t.originalX);
+            t.setLayoutY(t.originalY);
+        }
+    }
+
+    public void drawTiles(ArrayList<Tile> tiles) throws IllegalArgumentException{
+        for (int i = 1; i <= 7; i++) {
+            Tile t = tiles.get(i - 1);
+            t.setLayoutX(30 * i);
+            t.setLayoutY(getHeight()/2);
+            t.saveCoords();
+            getChildren().add(t);
+        }
     }
 
     private int getPoints(char[] word){

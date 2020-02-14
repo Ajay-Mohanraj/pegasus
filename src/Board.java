@@ -1,7 +1,8 @@
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import tiles.Tile;
 
 public class Board extends GridPane {
