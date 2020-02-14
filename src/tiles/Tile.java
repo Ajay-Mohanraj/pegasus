@@ -1,7 +1,5 @@
 package tiles;
 
-import javafx.scene.Node;
-
 public class Tile {
     private char letter;
     private int value;
@@ -26,7 +24,7 @@ public class Tile {
         else if (letter == 'Q' || letter == 'Z'){
             value = 10;
         }
-        else if (letter == '_'){
+        else if (letter == ' '){
             value = 0;
         }
         else {
