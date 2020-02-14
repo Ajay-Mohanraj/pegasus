@@ -105,7 +105,7 @@ public class Board extends GridPane {
 
 	}
 	public void addTile(Tile tile, int x, int y) {
-		tile.multplier = boardArray[x / 35][y / 35];
+		tile.multiplier = boardArray[x / 35][y / 35];
 		add(tile, x / 35, y / 35);
 		tile.setLayoutX(x);
 		tile.setLayoutY(y);

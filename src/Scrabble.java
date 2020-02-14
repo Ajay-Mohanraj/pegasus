@@ -41,16 +41,18 @@ public class Scrabble extends Application {
 
     public void play(){
         pm.doTurn(p1tiles, board, pts1, wholeThing);
+
+        //TODO: wait until doTurn returns >= 1
+
         giveTiles(p1tiles);
-        System.out.println(pts1);
+        System.out.println(p1tiles);
 
-        //wholeThing.setBottom(null);
+        pm.doTurn(p2tiles, board, pts2, wholeThing);
 
-        //pm.doTurn(p2tiles, board, pts2, wholeThing);
-        //giveTiles(p2tiles);
-        //System.out.println(pts2);
+        //TODO: same as above
 
-        //wholeThing.setBottom(null);
+        giveTiles(p2tiles);
+        System.out.println(pts2);
 
         if (bag.isEmpty()){
             String winner = pts1.get(0) > pts2.get(0) ? "player !1" : "player 2!";

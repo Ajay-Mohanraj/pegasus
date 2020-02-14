@@ -62,17 +62,14 @@ public class PlayerMenu extends Pane {
                         }
                         Collections.sort(tileList);
                     }
-                    else if (t.isPlaced && !tileList.contains(t)){
-                        if ((int) tileList.get(tileList.size() - 1).getLayoutX() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutX() / 35 && (int)t.getLayoutY() / 35 < (int) tileList.get(0).getLayoutY() / 35 &&  (int) tileList.get(0).getLayoutY() / 35 - (int)t.getLayoutY() / 35 < 1) {
+                    else if (!tileList.contains(t) && tileList.size() > 1){
+                        if ((int) tileList.get(tileList.size() - 1).getLayoutX() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutX() / 35 && (int)t.getLayoutY() / 35 < (int) tileList.get(0).getLayoutY() / 35 && (int) tileList.get(0).getLayoutY() / 35 - (int)t.getLayoutY() / 35 < 2) {
                             tileList.add(t);
-                        } else if ((int) tileList.get(tileList.size() - 1).getLayoutX() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutX() / 35 && (int) a.getY() / 35 > (int) tileList.get(tileList.size() - 1).getLayoutY() / 35) {
-                            board.addTile(t, (int) tileList.get(tileList.size() - 1).getLayoutX(), (int) tileList.get(tileList.size() - 1).getLayoutY() + 35);
+                        } else if ((int) tileList.get(tileList.size() - 1).getLayoutX() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutX() / 35 && (int)t.getLayoutY() / 35 > (int) tileList.get(tileList.size() - 1).getLayoutY() / 35 && (int) tileList.get(tileList.size() - 1).getLayoutY() / 35 - (int)t.getLayoutY() / 35 > -2) {
                             tileList.add(t);
-                        } else if ((int) tileList.get(tileList.size() - 1).getLayoutY() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutY() / 35 && (int) a.getX() / 35 < (int) tileList.get(0).getLayoutX() / 35) {
-                            board.addTile(t, (int) tileList.get(0).getLayoutX() - 35, (int) tileList.get(tileList.size() - 1).getLayoutY());
+                        } else if ((int) tileList.get(tileList.size() - 1).getLayoutY() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutY() / 35 && (int)t.getLayoutX() / 35 < (int) tileList.get(0).getLayoutX() / 35 && (int) tileList.get(0).getLayoutX() / 35 - (int)t.getLayoutX() / 35 < 2) {
                             tileList.add(t);
-                        } else if ((int) tileList.get(tileList.size() - 1).getLayoutY() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutY() / 35 && (int) a.getX() / 35 > (int) tileList.get(tileList.size() - 1).getLayoutX() / 35) {
-                            board.addTile(t, (int) tileList.get(tileList.size() - 1).getLayoutX() + 35, (int) tileList.get(tileList.size() - 1).getLayoutY());
+                        } else if ((int) tileList.get(tileList.size() - 1).getLayoutY() / 35 == (int) tileList.get(tileList.size() - 2).getLayoutY() / 35 && (int)t.getLayoutX() / 35 > (int) tileList.get(tileList.size() - 1).getLayoutX() / 35 && (int) tileList.get(tileList.size() - 1).getLayoutX() / 35 - (int)t.getLayoutX() / 35 > -2) {
                             tileList.add(t);
                         }
                     }
@@ -83,6 +80,7 @@ public class PlayerMenu extends Pane {
                             word[0] += o.getLetter();
                             multipliers[i++] = o.getMultiplier();
                         }
+                        tileList.clear();
                         if (k.getCode().equals(KeyCode.ENTER)) {
                             if (words.contains(word[0])) {
                                 points.set(0, points.get(0) + getPoints(word[0].toCharArray(), multipliers));

@@ -10,7 +10,7 @@ public class Tile extends StackPane implements Comparable<Tile> {
     public boolean isPlaced = false;
     public int originalX;
     public int originalY;
-    public Filler multplier = new Normal();
+    public Filler multiplier = new Normal();
 
 
     public Tile(char letter) {
@@ -19,7 +19,7 @@ public class Tile extends StackPane implements Comparable<Tile> {
     }
 
     public Filler getMultiplier(){
-        return multplier;
+        return multiplier;
     }
 
     public void create(){
