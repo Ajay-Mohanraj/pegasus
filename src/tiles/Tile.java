@@ -1,5 +1,7 @@
 package tiles;
 
+import javafx.scene.Node;
+
 public class Tile {
     private char letter;
     private int value;
