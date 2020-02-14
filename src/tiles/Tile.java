@@ -50,9 +50,6 @@ public class Tile extends StackPane {
         t.setFont(Font.font("Calibri", 25));
 
         this.getChildren().addAll(r, t);
-
-
-
     }
 
     public String getLetter() {
