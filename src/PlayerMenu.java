@@ -21,9 +21,12 @@ public class PlayerMenu extends Pane {
         }
 
         for (int i = 1; i <= 7; i++) {
-            tiles.get(i - 1).setX(getWidth()/7 * i);
-            tiles.get(i - 1).setY(10);
-            getChildren().add(tiles.get(i - 1));
+            Tile t = tiles.get(i - 1);
+            t.setLayoutX(30 * i);
+            t.setLayoutY(getHeight()/2);
+
+            getChildren().add(t);
+
 
         }
 
