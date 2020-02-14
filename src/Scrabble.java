@@ -10,10 +10,6 @@ public class Scrabble extends Application {
     public void start(Stage stage) {
         Board board = new Board();
 
-        Tile tile = new Tile('A');
-
-        board.addTile(tile, 8, 8);
-
         Scene scene = new Scene(board);
 
         stage.setScene(scene);

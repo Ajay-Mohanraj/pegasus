@@ -9,9 +9,12 @@ public class Board extends GridPane {
 	public Board() {
 		for (int row = 0; row < 15; row++) {
 			for (int column = 0; column < 15; column++) {
-				this.addTile(new Tile(' '), row, column);
+				if (row == column) {
+					add(new MultWord(2), column, row);
+				}
 			}
 		}
+
 	}
 	public void addTile(Tile tile, int x, int y) {
 		add(new Text(tile.getLetter()), x, y);
