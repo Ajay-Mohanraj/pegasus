@@ -10,6 +10,6 @@ public class Board extends GridPane {
 
 	}
 	public void addTile(Tile tile, int x, int y) {
-		getChildren().add(new Text(tile.getLetter()));
+		add(new Text(tile.getLetter()), x, y);
 	}
 }

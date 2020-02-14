@@ -12,7 +12,7 @@ public class Scrabble extends Application {
 
         Tile tile = new Tile('A');
 
-        board.getChildren().add(new Text(tile.getLetter()));
+        board.addTile(tile, 8, 8);
 
         Scene scene = new Scene(board);
 

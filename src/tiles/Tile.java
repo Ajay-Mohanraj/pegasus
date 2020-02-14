@@ -26,6 +26,9 @@ public class Tile {
         else if (letter == 'Q' || letter == 'Z'){
             value = 10;
         }
+        else {
+            value = 1;
+        }
     }
 
     public String getLetter() {
