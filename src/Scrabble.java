@@ -10,13 +10,14 @@ import java.util.Arrays;
 public class Scrabble extends Application {
     private final char[] ALPHABET = "abcdefghijklmnopqrstuvwxyz_".toCharArray();
     private final int[] AMOUNTS = new int[] {9, 2, 2, 4, 12, 2, 3, 2, 9, 1, 1, 4, 2, 6, 8, 2, 1, 6, 4, 6, 4, 2, 2, 1, 2, 1, 2};
-    private ArrayList<Tile> tiles = new ArrayList<>();
     private ArrayList<Character> bag = new ArrayList<>();
-    private int tilesGiven = 0;
+    private ArrayList<Tile> p1tiles = new ArrayList<>();
+    private ArrayList<Tile> p2tiles = new ArrayList<>();
 
     public void start(Stage stage) {
         fillBag();
-        giveTiles();
+        giveTiles(p1tiles);
+        giveTiles(p2tiles);
         Board board = new Board();
         BorderPane wholeThing = new BorderPane();
 
@@ -37,7 +38,7 @@ public class Scrabble extends Application {
         stage.show();
     }
 
-    public void giveTiles(){
+    public void giveTiles(ArrayList<Tile> tiles){
         int needed = 7 - tiles.size();
         for (int i = 0; i < needed; i++){
             int tileIndex = (int)(Math.random() * bag.size());
